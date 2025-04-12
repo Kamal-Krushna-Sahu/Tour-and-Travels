@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
+import { FaBusAlt } from "react-icons/fa";
 
 const Header = () => {
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
@@ -11,40 +12,55 @@ const Header = () => {
   };
 
   return (
-    <header className="h-15 bg-zinc-800 flex justify-center items-center">
-      <nav className="flex justify-between items-center w-11/12 h-10 fixed">
-        <div className="bg-white rounded">
+    <header className="h-15 bg-blue-400 flex justify-center items-center">
+      <nav className="flex justify-between items-center w-full m-1 sm:w-10/12 md:w-9/12">
+        <div className="bg-white rounded h-10 flex justify-evenly items-center w-70">
           <h1 className="text-blue-400">Maa Santoshi Tours And Travels</h1>
+          <FaBusAlt className="text-blue-400" />
         </div>
 
-        <div className="flex items-center">
+        {/* navbar for large screen */}
+        <div className="hidden md:flex gap-10">
+          <NavLink to="/" className="text-white hover:text-blue-200">
+            Home
+          </NavLink>
+          <NavLink to="/about" className="text-white hover:text-blue-200">
+            About
+          </NavLink>
+          <NavLink to="/contact" className="text-white hover:text-blue-200">
+            Contact
+          </NavLink>
+        </div>
+
+        {/* hamburger menu for mobile devices */}
+        <div className="flex items-center md:hidden">
           {hamburgerMenu ? (
-            <IoClose onClick={handleClick} className="text-4xl text-white" />
+            <IoClose onClick={handleClick} className="text-5xl text-white" />
           ) : (
-            <IoMenu onClick={handleClick} className="text-4xl text-white" />
+            <IoMenu onClick={handleClick} className="text-5xl text-white" />
           )}
         </div>
       </nav>
 
       {hamburgerMenu && (
-        <div className="bg-white text-black w-full absolute top-15 flex flex-col p-4 gap-4 shadow-md">
+        <div className="bg-white text-black w-full absolute top-15 flex flex-col items-center p-4 gap-4 shadow-md">
           <NavLink
             to="/"
-            className="text-black hover:text-blue-400"
+            className="text-black hover:text-blue-400 text-xl"
             onClick={handleClick}
           >
             Home
           </NavLink>
           <NavLink
             to="/about"
-            className="text-black hover:text-blue-400"
+            className="text-black hover:text-blue-400 text-xl"
             onClick={handleClick}
           >
             About
           </NavLink>
           <NavLink
             to="/contact"
-            className="text-black hover:text-blue-400"
+            className="text-black hover:text-blue-400 text-xl"
             onClick={handleClick}
           >
             Contact
