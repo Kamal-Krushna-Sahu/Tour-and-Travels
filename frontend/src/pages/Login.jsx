@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router";
+import axios from "axios";
 import { useNavigate } from "react-router";
 
 const Login = () => {
@@ -7,12 +9,24 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://192.168.147.242:3000/", { email, password })
+      .then((res) => {
+        alert(res.data);
+        if (res.data === "success") {
+          navigate("/app");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="pt-40 flex flex-col justify-center items-center gap-5">
       <h1 className="text-5xl text-blue-400">Login</h1>
       <form
-        action="http://localhost:3000/login"
-        method="post"
+        onSubmit={handleSubmit}
         className="flex flex-col justify-center items-center gap-5 rounded bg-blue-300 backdrop-blur-xl px-5 py-10"
       >
         <input
@@ -38,12 +52,12 @@ const Login = () => {
       </form>
       <div>
         Does not have an account
-        <button
+        <Link
+          to="/signup"
           className="text-blue-500 text-xl cursor-pointer ml-2"
-          onClick={() => navigate("/signup")}
         >
           Signup
-        </button>
+        </Link>
       </div>
     </div>
   );
