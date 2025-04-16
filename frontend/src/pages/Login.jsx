@@ -14,9 +14,10 @@ const Login = () => {
     axios
       .post("http://192.168.147.242:3000/", { email, password })
       .then((res) => {
-        alert(res.data);
         if (res.data === "success") {
           navigate("/app");
+        } else {
+          alert(res.data);
         }
       })
       .catch((err) => console.log(err));

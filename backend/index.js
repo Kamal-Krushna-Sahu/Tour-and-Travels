@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userModel = require("./models/user.model.js");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 
 mongoose.connect("mongodb://localhost:27017/TravelBusiness");
 
@@ -31,7 +32,7 @@ app.post("/", (req, res) => {
     .then((user) => {
       if (user) {
         if (user.password === password) {
-          res.json("success");
+          let token = jwt.sign({email:user.email})
         } else {
           res.json("Either the email or password is incorrect");
         }
@@ -42,6 +43,7 @@ app.post("/", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-app.listen(port, "0.0.0.0", () => { // Use 0.0.0.0 for Broad Accessibility (If you want your server accessible from any network interface (e.g., for easy testing across multiple devices), you can let Express listen on all interfaces by passing 0.0.0.0 as the host)
+app.listen(port, "0.0.0.0", () => {
+  // Use 0.0.0.0 for Broad Accessibility (If you want your server accessible from any network interface (e.g., for easy testing across multiple devices), you can let Express listen on all interfaces by passing 0.0.0.0 as the host)
   console.log(`Example app listening on port ${port}`);
 });

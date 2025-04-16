@@ -21,13 +21,13 @@ const Header = () => {
 
         {/* navbar for large screen */}
         <div className="hidden md:flex gap-10">
-          <NavLink to="/" className="text-white hover:text-blue-200">
+          <NavLink to="/app" className="text-white hover:text-blue-200">
             Home
           </NavLink>
-          <NavLink to="/about" className="text-white hover:text-blue-200">
+          <NavLink to="/app/about" className="text-white hover:text-blue-200">
             About
           </NavLink>
-          <NavLink to="/contact" className="text-white hover:text-blue-200">
+          <NavLink to="/app/contact" className="text-white hover:text-blue-200">
             Contact
           </NavLink>
         </div>
@@ -45,21 +45,21 @@ const Header = () => {
       {hamburgerMenu && (
         <div className="bg-white text-black w-full absolute top-15 flex flex-col items-center p-4 gap-4 shadow-md">
           <NavLink
-            to="/"
+            to="/app"
             className="text-black hover:text-blue-400 text-xl"
             onClick={handleClick}
           >
             Home
           </NavLink>
           <NavLink
-            to="/about"
+            to="/app/about"
             className="text-black hover:text-blue-400 text-xl"
             onClick={handleClick}
           >
             About
           </NavLink>
           <NavLink
-            to="/contact"
+            to="/app/contact"
             className="text-black hover:text-blue-400 text-xl"
             onClick={handleClick}
           >
