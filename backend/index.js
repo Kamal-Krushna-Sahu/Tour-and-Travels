@@ -32,7 +32,8 @@ app.post("/", (req, res) => {
     .then((user) => {
       if (user) {
         if (user.password === password) {
-          let token = jwt.sign({email:user.email})
+          let token = jwt.sign({ email: user.email }, "secret");
+          res.cookie("token", token);
         } else {
           res.json("Either the email or password is incorrect");
         }
