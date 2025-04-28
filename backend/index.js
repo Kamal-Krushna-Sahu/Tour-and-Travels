@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userModel = require("./models/user.model.js");
 const cors = require("cors");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 mongoose.connect("mongodb://localhost:27017/TravelBusiness");
 
@@ -25,6 +25,25 @@ app.post("/signup", (req, res) => {
     .catch((err) => res.json(err));
 });
 
+// app.post("/", (req, res) => {
+//   const { email, password } = req.body;
+//   userModel
+//     .findOne({ email })
+//     .then((user) => {
+//       if (user) {
+//         if (user.password === password) {
+//           let token = jwt.sign({ email: user.email }, "secret");
+//           res.cookie("token", token);
+//         } else {
+//           res.json("Either the email or password is incorrect");
+//         }
+//       } else {
+//         res.json("Either the email or password is incorrect");
+//       }
+//     })
+//     .catch((err) => res.json(err));
+// });
+
 app.post("/", (req, res) => {
   const { email, password } = req.body;
   userModel
@@ -32,8 +51,7 @@ app.post("/", (req, res) => {
     .then((user) => {
       if (user) {
         if (user.password === password) {
-          let token = jwt.sign({ email: user.email }, "secret");
-          res.cookie("token", token);
+          res.json("success");
         } else {
           res.json("Either the email or password is incorrect");
         }
