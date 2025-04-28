@@ -1,9 +1,11 @@
-import React from 'react'
+
 
 const ContactPage = () => {
   return (
-    <div>ContactPage</div>
-  )
-}
+    <div className="h-screen flex justify-center items-center">
+      <h1>Contact Page</h1>
+    </div>
+  );
+};
 
-export default ContactPage
+export default ContactPage;

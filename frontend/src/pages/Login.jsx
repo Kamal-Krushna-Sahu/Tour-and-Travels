@@ -12,7 +12,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://192.168.147.242:3000/", { email, password })
+      .post("http://192.168.254.242:3000/", { email, password })
       .then((res) => {
         if (res.data === "success") {
           navigate("/app");
