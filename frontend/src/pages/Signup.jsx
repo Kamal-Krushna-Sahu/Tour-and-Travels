@@ -13,7 +13,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://192.168.254.242:3000/signup", { username, email, password })
+      .post("http://192.168.210.242:3000/signup", { username, email, password })
       .then((res) => {
         console.log(res);
         navigate("/");
