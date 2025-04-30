@@ -17,78 +17,83 @@ const Header = () => {
   };
 
   return (
-    <header className="h-15 bg-blue-400 flex justify-center items-center">
-      <nav className="flex justify-between items-center w-full m-2 sm:w-10/12 md:w-9/12">
-        <div className="bg-white rounded h-8 flex gap-3 px-2 items-center md:w-xl md:justify-center">
-          <h1 className="text-blue-400 font-bold">
-            Maa Santoshi Tours And Travels
-          </h1>
-          <FaBusAlt className="text-blue-400" />
-        </div>
+    <header>
+      <div className="h-15 bg-blue-400 flex justify-center items-center">
+        <nav className="flex justify-between items-center w-full m-2 p-2 sm:w-10/12 md:w-9/12">
+          <div className="bg-white rounded h-8 flex gap-3 px-2 items-center md:w-xl md:justify-center">
+            <h1 className="text-blue-400 font-bold md:tracking-wider">
+              Maa Santoshi Tours And Travels
+            </h1>
+            <FaBusAlt className="text-blue-400" />
+          </div>
 
-        {/* navbar for large screen */}
-        <div className="hidden md:flex md:items-center gap-10">
-          <NavLink to="/app" className="text-white hover:text-blue-200">
-            Home
-          </NavLink>
-          <NavLink to="/app/about" className="text-white hover:text-blue-200">
-            About
-          </NavLink>
-          <NavLink to="/app/contact" className="text-white hover:text-blue-200">
-            Contact
-          </NavLink>
-          <NavLink
-            to="/"
-            className="bg-red-400 text-white rounded-full px-2 flex items-center hover:bg-red-500"
-            onClick={handleLogout}
-          >
-            <MdOutlineLogout />
-            Logout
-          </NavLink>
-        </div>
+          {/* navbar for large screen */}
+          <div className="hidden md:flex md:items-center gap-10">
+            <NavLink to="/app" className="text-white hover:text-blue-200">
+              Home
+            </NavLink>
+            <NavLink to="/app/about" className="text-white hover:text-blue-200">
+              About
+            </NavLink>
+            <NavLink
+              to="/app/contact"
+              className="text-white hover:text-blue-200"
+            >
+              Contact
+            </NavLink>
+            <NavLink
+              to="/"
+              className="bg-red-400 text-white rounded-full px-2 flex items-center hover:bg-red-500"
+              onClick={handleLogout}
+            >
+              <MdOutlineLogout />
+              Logout
+            </NavLink>
+          </div>
 
-        {/* hamburger menu for mobile devices */}
-        <div className="flex items-center md:hidden">
-          {hamburgerMenu ? (
-            <IoClose onClick={handleClick} className="text-4xl text-white" />
-          ) : (
-            <IoMenu onClick={handleClick} className="text-4xl text-white" />
-          )}
-        </div>
-      </nav>
+          {/* hamburger menu for mobile devices */}
+          <div className="flex items-center md:hidden">
+            {hamburgerMenu ? (
+              <IoClose onClick={handleClick} className="text-4xl text-white" />
+            ) : (
+              <IoMenu onClick={handleClick} className="text-4xl text-white" />
+            )}
+          </div>
+        </nav>
 
-      {hamburgerMenu && (
-        <div className="bg-white w-full absolute top-15 flex flex-col items-center p-4 gap-4 shadow-md">
-          <NavLink
-            to="/app"
-            className="text-blue-400 font-bold"
-            onClick={handleClick}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/app/about"
-            className="text-blue-400 font-bold"
-            onClick={handleClick}
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/app/contact"
-            className="text-blue-400 font-bold"
-            onClick={handleClick}
-          >
-            Contact
-          </NavLink>
-          <NavLink
-            to="/"
-            className="bg-red-500 text-white font-bold rounded-full px-2 py-1 flex items-center"
-            onClick={handleLogout}
-          >
-            <MdOutlineLogout className="text-xl" /> Logout
-          </NavLink>
-        </div>
-      )}
+        {hamburgerMenu && (
+          <div className="bg-blue-400 w-full absolute top-15 flex flex-col items-center p-4 gap-4 shadow-lg">
+            <NavLink
+              to="/app"
+              className="text-white font-bold"
+              onClick={handleClick}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/app/about"
+              className="text-white font-bold"
+              onClick={handleClick}
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/app/contact"
+              className="text-white font-bold"
+              onClick={handleClick}
+            >
+              Contact
+            </NavLink>
+            <NavLink
+              to="/"
+              className="bg-red-500 text-white font-bold rounded-full px-2 py-1 flex items-center"
+              onClick={handleLogout}
+            >
+              <MdOutlineLogout className="text-xl" /> Logout
+            </NavLink>
+          </div>
+        )}
+      </div>
     </header>
   );
 };
