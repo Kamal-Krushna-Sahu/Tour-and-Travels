@@ -10,23 +10,7 @@ import Signup from "./pages/Signup.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AuthLayout />,
-    children: [
-      {
-        index: true,
-        element: <Login />,
-      },
-      {
-        path: "signup",
-        element: <Signup />,
-      },
-    ],
-  },
-
-  {
-    path: "/app",
     element: <AppLayout />,
-    // errorElement: ,
     children: [
       {
         index: true,
@@ -39,6 +23,22 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <ContactPage />,
+      },
+    ],
+  },
+
+  {
+    path: "/login",
+    element: <AuthLayout />,
+    // errorElement: ,
+    children: [
+      {
+        index: true,
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
       },
     ],
   },
