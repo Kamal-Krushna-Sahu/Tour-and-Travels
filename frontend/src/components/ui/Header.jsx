@@ -3,17 +3,32 @@ import { NavLink } from "react-router";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import { FaBusAlt } from "react-icons/fa";
-import { MdOutlineLogout } from "react-icons/md";
+import { MdOutlineLogin, MdOutlineLogout } from "react-icons/md";
 
 const Header = () => {
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
+  const [loginClicked, setLoginClicked] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleClick = () => {
     setHamburgerMenu(!hamburgerMenu);
   };
 
+  const hamMenuOpen = () => {
+    setHamburgerMenu(!hamburgerMenu);
+  };
+  
+  const hamMenuClose = () => {
+    setHamburgerMenu(!hamburgerMenu);
+    setLoginClicked(false);
+  };
+
+  const handleLoginClick = () => {
+    setLoginClicked(!loginClicked);
+  };
+
   const handleLogout = () => {
-    //logout logic to be implemented
+    setIsLoggedIn(false);
   };
 
   return (
@@ -29,69 +44,101 @@ const Header = () => {
 
           {/* navbar for large screen */}
           <div className="hidden md:flex md:items-center gap-10">
-            <NavLink to="/app" className="text-white hover:text-blue-200">
+            <NavLink to="/" className="text-white hover:text-blue-200">
               Home
             </NavLink>
-            <NavLink to="/app/about" className="text-white hover:text-blue-200">
+            <NavLink to="/about" className="text-white hover:text-blue-200">
               About
             </NavLink>
-            <NavLink
-              to="/app/contact"
-              className="text-white hover:text-blue-200"
-            >
+            <NavLink to="/contact" className="text-white hover:text-blue-200">
               Contact
             </NavLink>
-            <NavLink
-              to="/"
-              className="bg-red-400 text-white rounded-full px-2 flex items-center hover:bg-red-500"
-              onClick={handleLogout}
-            >
-              <MdOutlineLogout />
-              Logout
-            </NavLink>
+            {isLoggedIn ? (
+              <NavLink
+                to="/login"
+                className="bg-red-400 text-white rounded-full px-2 flex items-center hover:bg-red-500"
+                onClick={handleLogout}
+              >
+                <MdOutlineLogout />
+                Logout
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                className="bg-lime-400 text-white rounded-full px-2 flex items-center hover:bg-lime-500"
+                onClick={handleLogout}
+              >
+                Login
+                <MdOutlineLogin />
+              </NavLink>
+            )}
           </div>
 
           {/* hamburger menu for mobile devices */}
           <div className="flex items-center md:hidden">
             {hamburgerMenu ? (
-              <IoClose onClick={handleClick} className="text-4xl text-white" />
+              <IoClose onClick={hamMenuClose} className="text-4xl text-white" />
             ) : (
-              <IoMenu onClick={handleClick} className="text-4xl text-white" />
+              <IoMenu onClick={hamMenuOpen} className="text-4xl text-white" />
             )}
           </div>
         </nav>
 
         {hamburgerMenu && (
-          <div className="bg-blue-400 w-full absolute top-15 flex flex-col items-center p-4 gap-4 shadow-lg">
-            <NavLink
-              to="/app"
-              className="text-white font-bold"
-              onClick={handleClick}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/app/about"
-              className="text-white font-bold"
-              onClick={handleClick}
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/app/contact"
-              className="text-white font-bold"
-              onClick={handleClick}
-            >
-              Contact
-            </NavLink>
-            <NavLink
-              to="/"
-              className="bg-red-500 text-white font-bold rounded-full px-2 py-1 flex items-center"
-              onClick={handleLogout}
-            >
-              <MdOutlineLogout className="text-xl" /> Logout
-            </NavLink>
-          </div>
+          <>
+            <div className="bg-blue-400 w-full absolute top-15 flex flex-col items-center p-4 gap-4 shadow-lg">
+              <NavLink
+                to="/"
+                className="text-white font-bold"
+                onClick={handleClick}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/about"
+                className="text-white font-bold"
+                onClick={handleClick}
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className="text-white font-bold"
+                onClick={handleClick}
+              >
+                Contact
+              </NavLink>
+              {isLoggedIn ? (
+                <NavLink
+                  to="/login"
+                  className="bg-red-400 text-white rounded-full px-2 flex items-center"
+                  onClick={handleLogout}
+                >
+                  <MdOutlineLogout />
+                  Logout
+                </NavLink>
+              ) : (
+                <NavLink
+                  className="bg-lime-500 text-white rounded-full px-2 flex items-center"
+                  onClick={handleLoginClick}
+                >
+                  Login
+                  <MdOutlineLogin />
+                </NavLink>
+              )}
+            </div>
+            {loginClicked && (
+              <div className="flex flex-col gap-2 backdrop-blur-xl absolute p-4 font-bold rounded-md top-38 right-4 shadow-xl">
+                <NavLink className="bg-lime-400 text-center p-1 w-25 text-blue-400 rounded-4xl shadow-2xl">
+                  User Login
+                </NavLink>
+
+                <NavLink className="bg-orange-300 text-center p-1 w-25 text-red-400 rounded-4xl shadow-2xl">
+                  Admin Login
+                </NavLink>
+              </div>
+            )}
+          </>
         )}
       </div>
     </header>
