@@ -6,6 +6,7 @@ import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
+import AdminLogin from "./pages/AdminLogin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,9 +38,13 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "signup",
+        path: "newuser/signup",
         element: <Signup />,
       },
+      {
+        path:"admin",
+        element: <AdminLogin />,
+      }
     ],
   },
 ]);

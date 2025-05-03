@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import axios from "axios";
 import { useNavigate } from "react-router";
@@ -23,10 +23,10 @@ const Signup = () => {
 
   return (
     <div className="pt-30 flex flex-col justify-center items-center gap-5">
-      <h1 className="text-5xl text-blue-400">Signup</h1>
+      <h1 className="text-5xl text-blue-400">User Signup</h1>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center gap-5 rounded bg-blue-300 backdrop-blur-xl px-5 py-10"
+        className="flex flex-col justify-center items-center gap-5 rounded bg-blue-50 backdrop-blur-xl px-5 py-10"
       >
         <input
           type="text"
@@ -34,7 +34,7 @@ const Signup = () => {
           value={username}
           placeholder="Enter Username..."
           onChange={(e) => setUsername(e.target.value)}
-          className="bg-zinc-200 rounded px-10 py-1 outline-none"
+          className="shadow-md rounded px-10 py-1 outline-none"
         />
         <input
           type="email"
@@ -42,7 +42,7 @@ const Signup = () => {
           value={email}
           placeholder="Enter Email..."
           onChange={(e) => setEmail(e.target.value)}
-          className="bg-zinc-200 rounded px-10 py-1 outline-none"
+          className="shadow-md rounded px-10 py-1 outline-none"
         />
         <input
           type="password"
@@ -50,17 +50,23 @@ const Signup = () => {
           value={password}
           placeholder="Enter Password..."
           onChange={(e) => setPassword(e.target.value)}
-          className="bg-zinc-200 rounded px-10 py-1 outline-none"
+          className="shadow-md rounded px-10 py-1 outline-none"
         />
         <input
           type="submit"
-          className="bg-blue-500 text-white px-10 py-1 rounded"
+          className="bg-blue-400 hover:bg-blue-500 text-white px-10 py-1 rounded cursor-pointer"
         />
       </form>
       <div>
         Already have an account
-        <Link to="/" className="text-blue-500 text-xl cursor-pointer ml-2">
+        <Link to="/login" className="bg-blue-500 text-white px-2 py-1 rounded-full text-xl ml-2">
           Login
+        </Link>
+      </div>
+      <div>
+        Back to
+        <Link to="/" className="text-xl text-blue-500 ml-2">
+          Home
         </Link>
       </div>
     </div>

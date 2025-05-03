@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { FaBusAlt } from "react-icons/fa";
@@ -37,7 +37,7 @@ const Header = () => {
         <nav className="flex justify-between items-center w-full m-2 p-2 sm:w-10/12 md:w-9/12">
           <NavLink
             to="/"
-            className="bg-white rounded h-8 flex gap-3 px-2 items-center md:w-xl md:justify-center"
+            className="bg-white/80 rounded h-8 flex gap-3 px-2 items-center md:w-xl md:justify-center"
           >
             <h1 className="text-blue-400 font-bold md:tracking-wider">
               Maa Santoshi Tours And Travels
@@ -77,11 +77,17 @@ const Header = () => {
           </div>
           {loginClicked && (
             <div className="hidden md:flex flex-col gap-2 bg-white/20 backdrop-blur-md  absolute px-10 py-4 font-bold rounded-md top-12 right-34 shadow-2xl">
-              <NavLink className="bg-lime-400 hover:bg-lime-500 text-center w-30 p-1 text-white rounded-4xl shadow-2xl">
+              <NavLink
+                to="/login"
+                className="bg-lime-400 hover:bg-lime-500 text-center w-30 p-1 text-white rounded-4xl shadow-2xl"
+              >
                 User Login
               </NavLink>
 
-              <NavLink className="bg-red-400 hover:bg-red-500 text-center w-30 p-1 text-white rounded-4xl shadow-2xl">
+              <NavLink
+                to="/login/admin"
+                className="bg-red-400 hover:bg-red-500 text-center w-30 p-1 text-white rounded-4xl shadow-2xl"
+              >
                 Admin Login
               </NavLink>
             </div>
@@ -92,10 +98,10 @@ const Header = () => {
             {hamburgerMenu ? (
               <IoClose
                 onClick={hamMenuClose}
-                className="text-4xl text-red-500"
+                className="text-4xl text-orange-400/80"
               />
             ) : (
-              <IoMenu onClick={hamMenuOpen} className="text-4xl text-white" />
+              <IoMenu onClick={hamMenuOpen} className="text-4xl text-white/80" />
             )}
           </div>
         </nav>
@@ -145,11 +151,17 @@ const Header = () => {
             </div>
             {loginClicked && (
               <div className="flex flex-col gap-2 bg-white/20 backdrop-blur-md absolute px-4 py-2 font-bold rounded-md top-40 right-4 shadow-2xl">
-                <NavLink className="bg-lime-500 text-center p-1 w-25 text-white rounded-4xl shadow-2xl">
+                <NavLink
+                  to="/login"
+                  className="bg-lime-500 text-center p-1 w-25 text-white rounded-4xl shadow-2xl"
+                >
                   User Login
                 </NavLink>
 
-                <NavLink className="bg-red-400 text-center p-1 w-25 text-white rounded-4xl shadow-2xl">
+                <NavLink
+                  to="/login/admin"
+                  className="bg-red-400 text-center p-1 w-25 text-white rounded-4xl shadow-2xl"
+                >
                   Admin Login
                 </NavLink>
               </div>
