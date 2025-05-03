@@ -17,7 +17,7 @@ const Header = () => {
   const hamMenuOpen = () => {
     setHamburgerMenu(!hamburgerMenu);
   };
-  
+
   const hamMenuClose = () => {
     setHamburgerMenu(!hamburgerMenu);
     setLoginClicked(false);
@@ -64,15 +64,25 @@ const Header = () => {
               </NavLink>
             ) : (
               <NavLink
-                to="/login"
                 className="bg-lime-400 text-white rounded-full px-2 flex items-center hover:bg-lime-500"
-                onClick={handleLogout}
+                onClick={handleLoginClick}
               >
                 Login
                 <MdOutlineLogin />
               </NavLink>
             )}
           </div>
+          {loginClicked && (
+            <div className="hidden md:flex flex-col gap-2 bg-white/20 backdrop-blur-md  absolute px-10 py-4 font-bold rounded-md top-12 right-34 shadow-2xl">
+              <NavLink className="bg-lime-400 hover:bg-lime-500 text-center w-30 p-1 text-white rounded-4xl shadow-2xl">
+                User Login
+              </NavLink>
+
+              <NavLink className="bg-red-400 hover:bg-red-500 text-center w-30 p-1 text-white rounded-4xl shadow-2xl">
+                Admin Login
+              </NavLink>
+            </div>
+          )}
 
           {/* hamburger menu for mobile devices */}
           <div className="flex items-center md:hidden">
@@ -128,12 +138,12 @@ const Header = () => {
               )}
             </div>
             {loginClicked && (
-              <div className="flex flex-col gap-2 backdrop-blur-xl absolute p-4 font-bold rounded-md top-38 right-4 shadow-xl">
-                <NavLink className="bg-lime-400 text-center p-1 w-25 text-blue-400 rounded-4xl shadow-2xl">
+              <div className="flex flex-col gap-2 bg-white/20 backdrop-blur-md absolute px-4 py-2 font-bold rounded-md top-40 right-4 shadow-2xl">
+                <NavLink className="bg-lime-500 text-center p-1 w-25 text-white rounded-4xl shadow-2xl">
                   User Login
                 </NavLink>
 
-                <NavLink className="bg-orange-300 text-center p-1 w-25 text-red-400 rounded-4xl shadow-2xl">
+                <NavLink className="bg-red-400 text-center p-1 w-25 text-white rounded-4xl shadow-2xl">
                   Admin Login
                 </NavLink>
               </div>

@@ -15,7 +15,7 @@ const HomePage = () => {
 
           <img
             className="h-60 object-cover rounded-xl shadow-xl md:w-1/3"
-            src="public/Bus.jpeg"
+            src="Bus.jpeg"
             alt="Bus image"
           />
         </div>
