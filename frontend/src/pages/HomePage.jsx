@@ -1,3 +1,6 @@
+import { IoCallSharp } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+
 const HomePage = () => {
   return (
     <div className="px-4 py-3 bg-gradient-to-b from-blue-300 to-blue-400 md:to-blue-500">
@@ -37,8 +40,14 @@ const HomePage = () => {
               To enroll your child or for more information, please contact us
               at:
               <br />
-              <b>Phone:</b> 1234567890 <br />
-              <b>Email:</b> maasantoshi@gmail.com <br />
+              <span className="flex justify-center items-center gap-2 underline">
+                <IoCallSharp className="text-green-400"/>
+                Phone: 1234567890 <br />
+              </span>
+              <span className="flex justify-center items-center gap-2 underline">
+                <MdEmail className="text-green-400"/>
+                Email: maasantoshi@gmail.com <br />
+              </span>
             </p>
             <span className="font-bold text-xl md:text-2xl text-orange-300">
               Spaces are limited—reserve your seat today!

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router";
-import { IoMenu } from "react-icons/io5";
-import { IoClose } from "react-icons/io5";
+import { IoMenu, IoClose } from "react-icons/io5";
 import { FaBusAlt } from "react-icons/fa";
 import { MdOutlineLogin, MdOutlineLogout } from "react-icons/md";
 
@@ -11,19 +10,20 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleClick = () => {
-    setHamburgerMenu(!hamburgerMenu);
-  };
-
-  const hamMenuOpen = () => {
-    setHamburgerMenu(!hamburgerMenu);
-  };
-
-  const hamMenuClose = () => {
-    setHamburgerMenu(!hamburgerMenu);
+    setHamburgerMenu(false);
     setLoginClicked(false);
   };
 
-  const handleLoginClick = () => {
+  const hamMenuOpen = () => {
+    setHamburgerMenu(true);
+  };
+
+  const hamMenuClose = () => {
+    setHamburgerMenu(false);
+    setLoginClicked(false);
+  };
+
+  const handleLoginClicked = () => {
     setLoginClicked(!loginClicked);
   };
 
@@ -35,12 +35,15 @@ const Header = () => {
     <header>
       <div className="h-15 bg-blue-400 flex justify-center items-center">
         <nav className="flex justify-between items-center w-full m-2 p-2 sm:w-10/12 md:w-9/12">
-          <div className="bg-white rounded h-8 flex gap-3 px-2 items-center md:w-xl md:justify-center">
+          <NavLink
+            to="/"
+            className="bg-white rounded h-8 flex gap-3 px-2 items-center md:w-xl md:justify-center"
+          >
             <h1 className="text-blue-400 font-bold md:tracking-wider">
               Maa Santoshi Tours And Travels
             </h1>
             <FaBusAlt className="text-blue-400" />
-          </div>
+          </NavLink>
 
           {/* navbar for large screen */}
           <div className="hidden md:flex md:items-center gap-10">
@@ -63,13 +66,13 @@ const Header = () => {
                 Logout
               </NavLink>
             ) : (
-              <NavLink
+              <button
                 className="bg-lime-400 text-white rounded-full px-2 flex items-center hover:bg-lime-500"
-                onClick={handleLoginClick}
+                onClick={handleLoginClicked}
               >
                 Login
-                <MdOutlineLogin />
-              </NavLink>
+                <MdOutlineLogin className="text-xl" />
+              </button>
             )}
           </div>
           {loginClicked && (
@@ -87,7 +90,10 @@ const Header = () => {
           {/* hamburger menu for mobile devices */}
           <div className="flex items-center md:hidden">
             {hamburgerMenu ? (
-              <IoClose onClick={hamMenuClose} className="text-4xl text-white" />
+              <IoClose
+                onClick={hamMenuClose}
+                className="text-4xl text-red-500"
+              />
             ) : (
               <IoMenu onClick={hamMenuOpen} className="text-4xl text-white" />
             )}
@@ -128,13 +134,13 @@ const Header = () => {
                   Logout
                 </NavLink>
               ) : (
-                <NavLink
+                <button
                   className="bg-lime-500 text-white rounded-full px-2 flex items-center"
-                  onClick={handleLoginClick}
+                  onClick={handleLoginClicked}
                 >
                   Login
-                  <MdOutlineLogin />
-                </NavLink>
+                  <MdOutlineLogin className="text-xl" />
+                </button>
               )}
             </div>
             {loginClicked && (
