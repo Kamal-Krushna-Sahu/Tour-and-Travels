@@ -2,11 +2,11 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import AuthLayout from "./components/layouts/AuthLayout.jsx";
 import AppLayout from "./components/layouts/AppLayout";
 import HomePage from "./pages/HomePage.jsx";
-import AboutPage from "./pages/AboutPage.jsx";
-import ContactPage from "./pages/ContactPage.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import AdminLogin from "./pages/AdminLogin.jsx";
+import UserPage from "./pages/UserPage.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +18,12 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "about",
-        element: <AboutPage />,
+        path: "user",
+        element: <UserPage />,
       },
       {
-        path: "contact",
-        element: <ContactPage />,
+        path: "admin",
+        element: <AdminPage />,
       },
     ],
   },

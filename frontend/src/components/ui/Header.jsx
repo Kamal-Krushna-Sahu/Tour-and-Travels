@@ -50,11 +50,11 @@ const Header = () => {
             <NavLink to="/" className="text-white hover:text-blue-200">
               Home
             </NavLink>
-            <NavLink to="/about" className="text-white hover:text-blue-200">
-              About
+            <NavLink to="/user" className="text-white hover:text-blue-200">
+              User
             </NavLink>
-            <NavLink to="/contact" className="text-white hover:text-blue-200">
-              Contact
+            <NavLink to="/admin" className="text-white hover:text-blue-200">
+              Admin
             </NavLink>
             {isLoggedIn ? (
               <NavLink
@@ -117,18 +117,18 @@ const Header = () => {
                 Home
               </NavLink>
               <NavLink
-                to="/about"
+                to="/user"
                 className="text-white font-bold"
                 onClick={handleClick}
               >
-                About
+                User
               </NavLink>
               <NavLink
-                to="/contact"
+                to="/admin"
                 className="text-white font-bold"
                 onClick={handleClick}
               >
-                Contact
+                Admin
               </NavLink>
               {isLoggedIn ? (
                 <NavLink
