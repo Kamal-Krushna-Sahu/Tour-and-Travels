@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 // const bcrypt = require("bcrypt");
 // const jwt = require("jsonwebtoken");
 
@@ -43,4 +43,4 @@ const userSchema = new mongoose.Schema({
 //   );
 // };
 
-module.exports = mongoose.model("user", userSchema);
+export const userModel = mongoose.model("userModel", userSchema);

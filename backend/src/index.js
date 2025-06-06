@@ -1,17 +1,28 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const userModel = require("./models/user.model.js");
-const cors = require("cors");
-// const jwt = require("jsonwebtoken");
+import express from "express";
+import mongoose from "mongoose";
+import { userModel } from "./models/user.model.js";
+import cors from "cors";
+// import jwt from "jsonwebtoken";
+import Razorpay from "razorpay";
+import router from "../src/routes/payment.route.js";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env" });
 
 mongoose.connect("mongodb://localhost:27017/TravelBusiness");
 
 const app = express();
-const port = "3000";
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/api/v1", router);
+
+export const instance = new Razorpay({
+  key_id: process.env.RAZORPAY_API_KEY,
+  key_secret: process.env.RAZORPAY_API_SECRET,
+});
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
