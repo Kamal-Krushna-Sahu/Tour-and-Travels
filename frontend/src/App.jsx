@@ -7,6 +7,7 @@ import Signup from "./pages/Signup.jsx";
 import AdminLogin from "./pages/AdminLogin.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
+import PaymentSuccess from "./pages/PaymentSuccess.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       }
     ],
   },
+
+  {
+    path:"/paymentsuccess",
+    element:<PaymentSuccess />
+  }
 ]);
 
 const App = () => {
