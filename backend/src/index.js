@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import { userModel } from "./models/user.model.js";
+import { Parent } from "./models/parent.model.js";
 import cors from "cors";
 // import jwt from "jsonwebtoken";
 import Razorpay from "razorpay";
@@ -29,10 +29,10 @@ app.get("/", (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-  const { username, email, password } = req.body;
-  userModel
-    .create({ username, email, password })
-    .then((user) => res.json(user))
+  const { name, contactNumber, password, address } = req.body;
+  Parent
+    .create({ name, contactNumber, password, address })
+    .then((Parent) => res.json(Parent))
     .catch((err) => res.json(err));
 });
 

@@ -54,9 +54,13 @@ const parentSchema = new mongoose.Schema(
       required: true,
     },
     contactNumber: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
+    },
+    password: {
+      type: String,
+      required: [true, "password is required"]
     },
     address: {
       type: String,

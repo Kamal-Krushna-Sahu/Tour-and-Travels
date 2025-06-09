@@ -4,16 +4,17 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 const Signup = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://192.168.210.242:3000/signup", { username, email, password })
+      .post("http://localhost:3000/signup", { name, contactNumber, password, address })
       .then((res) => {
         console.log(res);
         navigate("/");
@@ -30,18 +31,18 @@ const Signup = () => {
       >
         <input
           type="text"
-          name="username"
-          value={username}
-          placeholder="Enter Username..."
-          onChange={(e) => setUsername(e.target.value)}
+          name="name"
+          value={name}
+          placeholder="Enter name..."
+          onChange={(e) => setName(e.target.value)}
           className="shadow-md rounded px-10 py-1 outline-none"
         />
         <input
-          type="email"
-          name="email"
-          value={email}
-          placeholder="Enter Email..."
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          name="contactNumber"
+          value={contactNumber}
+          placeholder="Enter Contact Number..."
+          onChange={(e) => setContactNumber(e.target.value)}
           className="shadow-md rounded px-10 py-1 outline-none"
         />
         <input
@@ -50,6 +51,14 @@ const Signup = () => {
           value={password}
           placeholder="Enter Password..."
           onChange={(e) => setPassword(e.target.value)}
+          className="shadow-md rounded px-10 py-1 outline-none"
+        />
+        <input
+          type="text"
+          name="address"
+          value={address}
+          placeholder="Enter Your Address..."
+          onChange={(e) => setAddress(e.target.value)}
           className="shadow-md rounded px-10 py-1 outline-none"
         />
         <input
